@@ -1,0 +1,24 @@
+.App {
+  padding: 30px;
+  display: flex;
+}
+
+.App > div {
+  margin-right: 50px;
+}
+.input-error {
+  border: 1px solid crimson;
+}
+
+.error-message {
+  color: crimson;
+}
+
+.active-btn {
+  background-color: darkorange;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: .5;
+}
