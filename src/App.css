@@ -1,11 +1,13 @@
 .App {
   padding: 30px;
   display: flex;
+  justify-content: center;
 }
 
 .App > div {
   margin-right: 50px;
 }
+
 .input-error {
   border: 1px solid crimson;
 }
@@ -18,7 +20,18 @@
   background-color: darkorange;
 }
 
+h3 {
+  padding-right: 10px;
+  color: cornflowerblue;
+}
+
 .completed {
   text-decoration: line-through;
   opacity: .5;
 }
+
+.box {
+  display: flex;
+  align-items: center;
+}
+
