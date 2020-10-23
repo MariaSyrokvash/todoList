@@ -49,18 +49,18 @@ export function TodoList(props: PropsType) {
 
 	return (
 		<div>
-			<div className={'box'}>
-				<h3>{props.title}</h3>
-				<button onClick={removeTodoList}>&#8569;</button>
-			</div>
 			<div>
-				<input value={newTaskTitle} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}
-							 className={error ? 'input-error' : ''}/>
-				<button onClick={onCLickAddTaskHandler}
-				>+
-				</button>
+				<div className={'box'}>
+					<h3>{props.title}</h3>
+					<button onClick={removeTodoList}>&#8569;</button>
+				</div>
+				<div>
+					<input value={newTaskTitle} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}
+								 className={error ? 'input-error' : ''}/>
+					<button onClick={onCLickAddTaskHandler}>+</button>
+					<div>      {error && <div className='error-message'>{error}</div>} </div>
+				</div>
 			</div>
-			{error && <div className='error-message'>{error}</div>}
 			<ul>
 				{
 					props.tasks.map(task => {
