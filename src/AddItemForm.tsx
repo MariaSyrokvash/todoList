@@ -7,7 +7,9 @@ type AddItemFormPropsType = {
 function AddItemForm(props: AddItemFormPropsType) {
 	const [newTaskTitle, setTitle] = useState('');
 	const [error, setError] = useState<string | null>(null);
-	const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {setTitle(event.currentTarget.value)}
+	const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+		setTitle(event.currentTarget.value)
+	}
 	const onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
 		setError(null);
 
@@ -34,7 +36,7 @@ function AddItemForm(props: AddItemFormPropsType) {
 			<input value={newTaskTitle} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}
 						 className={error ? 'input-error' : ''}/>
 			<button onClick={onCLickAddTaskHandler}>+</button>
-			<div>      {error && <div className='error-message'>{error}</div>} </div>
+			{error && <div className='error-message'>{error}</div>}
 		</div>
 	)
 }
