@@ -2,21 +2,19 @@ import React, {useState} from 'react';
 import './App.css';
 import {TodoList} from './TodoList';
 import {v1} from 'uuid';
+import AddItemForm from './AddItemForm';
 
 export type FilterValuesType = 'all' | 'completed' | 'active'
-
 export type TaskType = {
 	id: string
 	title: string
 	isDone: boolean
 }
-
 type TodoListType = {
 	id: string
 	title: string
 	filter: FilterValuesType
 }
-
 type TaskStateType = {
 	[key: string]: Array<TaskType>
 }
@@ -31,7 +29,7 @@ function App() {
 		{id: toDoListsSecond, title: 'What are some products of the West Indies?', filter: 'all'}
 	])
 
-	const [tasks, setTasks] = useState<TaskStateType>({
+	const [tasksObj, setTasks] = useState<TaskStateType>({
 		[toDoListsFirst]: [
 			{id: v1(), title: 'Lykaskenko', isDone: false},
 			{id: v1(), title: 'Lincoln', isDone: false},
@@ -50,27 +48,24 @@ function App() {
 			title: title,
 			isDone: false
 		}
-		const findToDoList = tasks[toDoListID]
-		tasks[toDoListID] = [newTask, ...findToDoList]
-		setTasks({...tasks})
+		const findToDoList = tasksObj[toDoListID]
+		tasksObj[toDoListID] = [newTask, ...findToDoList]
+		setTasks({...tasksObj})
 	}
-
 	function removeTask(id: string, toDoListID: string) {
-		const findToDoList = tasks[toDoListID]
+		const findToDoList = tasksObj[toDoListID]
 		console.log(findToDoList)
-		tasks[toDoListID] = findToDoList.filter(task => task.id !== id)
-		setTasks({...tasks})
+		tasksObj[toDoListID] = findToDoList.filter(task => task.id !== id)
+		setTasks({...tasksObj})
 	}
-
 	function changeStatus(id: string, isDone: boolean, toDoListID: string) {
-		const findToDoList = tasks[toDoListID]
+		const findToDoList = tasksObj[toDoListID]
 		const task = findToDoList.find(task => task.id === id);
 		if (task) {
 			task.isDone = isDone;
-			setTasks({...tasks});
+			setTasks({...tasksObj});
 		}
 	}
-
 	function changeFilter(value: FilterValuesType, toDoListID: string) {
 		const findToDoList = toDoLists.find(todoList => todoList.id === toDoListID)
 
@@ -79,26 +74,60 @@ function App() {
 			setToDoList([...toDoLists])
 		}
 	}
-
 	function removeTodoList(toDoListID: string) {
 		const findToDoList = toDoLists.filter(todo => todo.id !== toDoListID)
 		setToDoList(findToDoList)
-		delete tasks[toDoListID]
-		setTasks({...tasks})
+		delete tasksObj[toDoListID]
+		setTasks({...tasksObj})
 	}
+	function addNewToDoList(title : string) {
+		const toDoList: TodoListType = {
+			id: v1(),
+			filter: 'all',
+			title: title
+		}
+		setToDoList([toDoList, ...toDoLists]);
+		setTasks({
+			...tasksObj,
+			[toDoList.id]: []
+		})
+	}
+	function changeTaskTitle(id: string, newTitle: string, toDoListID: string) {
+		const findToDoList = tasksObj[toDoListID]
+		const task = findToDoList.find(task => task.id === id);
+		if (task) {
+			task.title = newTitle;
+			setTasks({...tasksObj});
+		}
+	}
+
+	const changeTodoListTitle = (id: string, newTitle: string) => {
+		const todolist = toDoLists.filter(todo => todo.id === id)
+
+		if (todolist) {
+			todolist[0].title = newTitle;
+			setToDoList([...toDoLists])
+		}
+	}
+
 
 	return (
 		<div className="App">
+			<AddItemForm addItem={addNewToDoList} />
 
-			{toDoLists.map(toDoList => {
-				let tasksForTodoList = tasks[toDoList.id];
+
+
+
+			{ toDoLists.map(toDoList => {
+				let tasksForTodoList = tasksObj[toDoList.id];
+
 
 				if (toDoList.filter === 'completed') {
-					tasksForTodoList = tasks[toDoList.id].filter(task => task.isDone === true)
+					tasksForTodoList = tasksObj[toDoList.id].filter(task => task.isDone === true)
 				}
 
 				if (toDoList.filter === 'active') {
-					tasksForTodoList = tasks[toDoList.id].filter(task => task.isDone === false)
+					tasksForTodoList = tasksObj[toDoList.id].filter(task => task.isDone === false)
 				}
 				return (
 					<TodoList title={toDoList.title}
@@ -111,6 +140,8 @@ function App() {
 										id={toDoList.id}
 										key={toDoList.id}
 										removeTodoList={removeTodoList}
+										changeTaskTitle={ changeTaskTitle }
+										changeTodoListTitle = {changeTodoListTitle}
 					/>
 				)
 			})
