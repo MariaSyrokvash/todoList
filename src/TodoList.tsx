@@ -2,6 +2,9 @@ import React, {ChangeEvent} from 'react';
 import {FilterValuesType, TaskType} from './App';
 import AddItemForm from './AddItemForm';
 import EditableSpan from './EditableSpan';
+import {Button, IconButton, Typography} from '@material-ui/core';
+import Checkbox from '@material-ui/core/Checkbox';
+import {Delete} from '@material-ui/icons';
 
 type PropsType = {
 	id: string
@@ -13,8 +16,8 @@ type PropsType = {
 	changeFilter: (value: FilterValuesType, id: string) => void
 	changeStatus: (id: string, isDone: boolean, toDoListID: string) => void
 	removeTodoList: (toDoListID: string) => void
-	changeTaskTitle: (id: string, newTitle:string, toDoListID: string) => void
-	changeTodoListTitle: (id: string, newTitle:string) => void
+	changeTaskTitle: (id: string, newTitle: string, toDoListID: string) => void
+	changeTodoListTitle: (id: string, newTitle: string) => void
 }
 
 export function TodoList(props: PropsType) {
@@ -36,12 +39,12 @@ export function TodoList(props: PropsType) {
 		<div>
 			<div>
 				<div className={'box'}>
-					<h3>
-						<EditableSpan title={props.title} onChangeInTitleTask={ changeTodoListTitle  } />
-					</h3>
-					<button onClick={removeTodoList}>&#8569;</button>
+					<Typography variant={'h5'}>
+						<EditableSpan title={props.title} onChangeInTitleTask={changeTodoListTitle}/>
+						<IconButton onClick={removeTodoList} color={'primary'}><Delete/></IconButton>
+					</Typography>
 				</div>
-				<AddItemForm addItem={addTask} />
+				<AddItemForm addItem={addTask}/>
 			</div>
 			<ul>
 				{
@@ -58,22 +61,24 @@ export function TodoList(props: PropsType) {
 						}
 
 						return <li key={task.id} className={task.isDone ? 'completed' : ''}>
-							<input type="checkbox" checked={task.isDone} onChange={changeStatus}/>
-							<EditableSpan title={task.title} onChangeInTitleTask={ changeValueHandler }/>
-							<button onClick={removeTaskHandler}>x
-							</button>
+							{/*<input type="checkbox" checked={task.isDone} onChange={changeStatus}/>*/}
+							<Checkbox checked={task.isDone} onChange={changeStatus} color={'primary'}/>
+
+							<EditableSpan title={task.title} onChangeInTitleTask={changeValueHandler}/>
+							<IconButton onClick={removeTaskHandler} color={'primary'}><Delete/></IconButton>
 						</li>
 
 					})
 				}
 			</ul>
 			<div>
-				<button onClick={onCLickAllFilterHandler} className={props.filter === 'all' ? 'active-btn' : ''}>All</button>
-				<button onClick={onCLickActiveFilterHandler} className={props.filter === 'active' ? 'active-btn' : ''}>Active
-				</button>
-				<button onClick={onCLickCompletedFilterHandler}
-								className={props.filter === 'completed' ? 'active-btn' : ''}>Completed
-				</button>
+				<Button onClick={onCLickAllFilterHandler} color={'primary'}
+								variant={props.filter === 'all' ? 'contained' : 'text'}>All</Button>
+				<Button onClick={onCLickActiveFilterHandler} color={'primary'}
+								variant={props.filter === 'active' ? 'contained' : 'text'}>Active
+				</Button>
+				<Button onClick={onCLickCompletedFilterHandler} color={'primary'}
+								variant={props.filter === 'completed' ? 'contained' : 'text'}>Completed</Button>
 			</div>
 		</div>
 	)
