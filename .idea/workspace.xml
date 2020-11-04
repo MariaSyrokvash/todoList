@@ -2,21 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5eb78b0-6714-41d1-995e-1d5f04fa60e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/state/todolists.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/todolists.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/user-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/user-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddItemForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,7 +33,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/state" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -38,6 +43,57 @@
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/EditableSpan.tsx" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/state" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.user reducer should increment only childrenCount">
+    <configuration name="renders learn react link" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/App.test.tsx" />
+      <test-names>
+        <test-name value="renders learn react link" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="user reducer should increment only age" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/state/user-reducer.test.ts" />
+      <test-names>
+        <test-name value="user reducer should increment only age" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="user reducer should increment only childrenCount" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/state/user-reducer.test.ts" />
+      <test-names>
+        <test-name value="user reducer should increment only childrenCount" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.user reducer should increment only childrenCount" />
+        <item itemvalue="Jest.user reducer should increment only age" />
+        <item itemvalue="Jest.renders learn react link" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -64,25 +120,33 @@
       <screen x="0" y="22" width="1440" height="801" />
     </state>
     <state x="184" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.801/1440.-964.2048.1058@0.22.1440.801" timestamp="1602966392873" />
-    <state width="1419" height="172" key="GridCell.Tab.0.bottom" timestamp="1604047303620">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="441" y="230" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604487236739">
+      <screen x="0" y="22" width="1440" height="798" />
+    </state>
+    <state x="441" y="230" key="#com.intellij.fileTypes.FileTypeChooser/0.22.1440.798/1440.-964.2048.1058@0.22.1440.798" timestamp="1604487236739" />
+    <state width="1419" height="142" key="GridCell.Tab.0.bottom" timestamp="1604488878428">
+      <screen x="0" y="22" width="1440" height="798" />
     </state>
     <state width="1419" height="172" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-986.2048.1080@0.0.1440.900" timestamp="1604047303620" />
+    <state width="1419" height="142" key="GridCell.Tab.0.bottom/0.22.1440.798/1440.-964.2048.1058@0.22.1440.798" timestamp="1604488878428" />
     <state width="1419" height="205" key="GridCell.Tab.0.bottom/0.22.1440.801/1440.-964.2048.1058@0.22.1440.801" timestamp="1602965692758" />
-    <state width="1419" height="172" key="GridCell.Tab.0.center" timestamp="1604047303618">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1419" height="142" key="GridCell.Tab.0.center" timestamp="1604488878428">
+      <screen x="0" y="22" width="1440" height="798" />
     </state>
     <state width="1419" height="172" key="GridCell.Tab.0.center/0.0.1440.900/1440.-986.2048.1080@0.0.1440.900" timestamp="1604047303618" />
+    <state width="1419" height="142" key="GridCell.Tab.0.center/0.22.1440.798/1440.-964.2048.1058@0.22.1440.798" timestamp="1604488878428" />
     <state width="1419" height="205" key="GridCell.Tab.0.center/0.22.1440.801/1440.-964.2048.1058@0.22.1440.801" timestamp="1602965692757" />
-    <state width="1419" height="172" key="GridCell.Tab.0.left" timestamp="1604047303618">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1419" height="142" key="GridCell.Tab.0.left" timestamp="1604488878427">
+      <screen x="0" y="22" width="1440" height="798" />
     </state>
     <state width="1419" height="172" key="GridCell.Tab.0.left/0.0.1440.900/1440.-986.2048.1080@0.0.1440.900" timestamp="1604047303618" />
+    <state width="1419" height="142" key="GridCell.Tab.0.left/0.22.1440.798/1440.-964.2048.1058@0.22.1440.798" timestamp="1604488878427" />
     <state width="1419" height="205" key="GridCell.Tab.0.left/0.22.1440.801/1440.-964.2048.1058@0.22.1440.801" timestamp="1602965692756" />
-    <state width="1419" height="172" key="GridCell.Tab.0.right" timestamp="1604047303619">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1419" height="142" key="GridCell.Tab.0.right" timestamp="1604488878428">
+      <screen x="0" y="22" width="1440" height="798" />
     </state>
     <state width="1419" height="172" key="GridCell.Tab.0.right/0.0.1440.900/1440.-986.2048.1080@0.0.1440.900" timestamp="1604047303619" />
+    <state width="1419" height="142" key="GridCell.Tab.0.right/0.22.1440.798/1440.-964.2048.1058@0.22.1440.798" timestamp="1604488878428" />
     <state width="1419" height="205" key="GridCell.Tab.0.right/0.22.1440.801/1440.-964.2048.1058@0.22.1440.801" timestamp="1602965692757" />
   </component>
 </project>
