@@ -1,37 +1,37 @@
-.App {
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-}
+/*.App {*/
+/*  padding: 30px;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
 
-.App > div {
-  margin-right: 50px;
-}
+/*.App > div {*/
+/*  margin-right: 50px;*/
+/*}*/
 
-.input-error {
-  border: 1px solid crimson;
-}
+/*.input-error {*/
+/*  border: 1px solid crimson;*/
+/*}*/
 
-.error-message {
-  color: crimson;
-}
+/*.error-message {*/
+/*  color: crimson;*/
+/*}*/
 
-.active-btn {
-  background-color: darkorange;
-}
+/*.active-btn {*/
+/*  background-color: darkorange;*/
+/*}*/
 
-h3 {
-  padding-right: 10px;
-  color: cornflowerblue;
-}
+/*h3 {*/
+/*  padding-right: 10px;*/
+/*  color: cornflowerblue;*/
+/*}*/
 
-.completed {
-  text-decoration: line-through;
-  opacity: .5;
-}
+/*.completed {*/
+/*  text-decoration: line-through;*/
+/*  opacity: .5;*/
+/*}*/
 
-.box {
-  display: flex;
-  align-items: center;
-}
+/*.box {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*}*/
 
