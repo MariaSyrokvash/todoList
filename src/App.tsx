@@ -76,21 +76,22 @@ function App() {
 		}
 	}
 
-	function changeFilter(value: FilterValuesType, toDoListID: string) {
-		const findToDoList = toDoLists.find(todoList => todoList.id === toDoListID)
-
-		if (findToDoList) {
-			findToDoList.filter = value;
-			setToDoList([...toDoLists])
-		}
-	}
-
 	function changeTaskTitle(id: string, newTitle: string, toDoListID: string) {
 		const findToDoList = tasksObj[toDoListID]
 		const task = findToDoList.find(task => task.id === id);
 		if (task) {
 			task.title = newTitle;
 			setTasks({...tasksObj});
+		}
+	}
+
+
+	function changeFilter(value: FilterValuesType, toDoListID: string) {
+		const findToDoList = toDoLists.find(todoList => todoList.id === toDoListID)
+
+		if (findToDoList) {
+			findToDoList.filter = value;
+			setToDoList([...toDoLists])
 		}
 	}
 

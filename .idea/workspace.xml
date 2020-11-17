@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5eb78b0-6714-41d1-995e-1d5f04fa60e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/todolists-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/todolists-tasks-reducer.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/todolists.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/todolists.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/tasks-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +109,9 @@
       <workItem from="1604047162765" duration="528000" />
       <workItem from="1604047933883" duration="2972000" />
       <workItem from="1604052079393" duration="3002000" />
+      <workItem from="1605555303388" duration="1052000" />
+      <workItem from="1605559370697" duration="2165000" />
+      <workItem from="1605563912013" duration="7333000" />
     </task>
     <servers />
   </component>
@@ -142,5 +151,9 @@
     <state width="1419" height="172" key="GridCell.Tab.0.right/0.0.1440.900/1440.-986.2048.1080@0.0.1440.900" timestamp="1604047303619" />
     <state width="1419" height="142" key="GridCell.Tab.0.right/0.22.1440.798/1440.-964.2048.1058@0.22.1440.798" timestamp="1604500582437" />
     <state width="1419" height="205" key="GridCell.Tab.0.right/0.22.1440.801/1440.-964.2048.1058@0.22.1440.801" timestamp="1602965692757" />
+    <state x="385" y="144" key="search.everywhere.popup" timestamp="1605564959671">
+      <screen x="0" y="22" width="1440" height="798" />
+    </state>
+    <state x="385" y="144" key="search.everywhere.popup/0.22.1440.798/1440.-964.2048.1058@0.22.1440.798" timestamp="1605564959671" />
   </component>
 </project>
