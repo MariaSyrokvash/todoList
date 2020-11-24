@@ -1,6 +1,7 @@
-import {TaskStateType, TaskType} from '../App';
+
 import {v1} from 'uuid';
 import {addTodoListActionType, removeTodoListActionType} from './todolists-reducer';
+import {TaskStateType, TaskType} from '../AppWithRedux';
 
 
 type removeTaskACType = {
@@ -67,11 +68,10 @@ export const tasksReducer = (state: TaskStateType = initialState, action: Action
 		}
 		case 'CHANGE-STATUS-TASK': {
 			const stateCopy = {...state};
-			const findToDoList = state[action.toDoListID];
-			const task = findToDoList.find(task => task.id === action.id);
-			if (task) {
-				task.isDone = action.isDone;
-			}
+
+			const findToDoList = stateCopy[action.toDoListID];
+			stateCopy[action.toDoListID] = findToDoList.map(t => t.id === action.id ? {...t, isDone: action.isDone} : t)
+
 			return stateCopy
 		}
 
