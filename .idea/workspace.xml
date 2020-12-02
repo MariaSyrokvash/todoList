@@ -2,14 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5eb78b0-6714-41d1-995e-1d5f04fa60e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Task.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.storybook/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.storybook/preview.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration/addItemForm.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration/jest.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration/setupTests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AddItemForm.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AppWithRedux.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EditableSpan.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Task.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Button.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Header.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Introduction.stories.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Page.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/Page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/ReduxStoreProviderDecorator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/code-brackets.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/colors.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/comments.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/direction.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/flow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/plugin.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/repo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/assets/stackalt.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/page.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddItemForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppWithRedux.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithRedux.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/tasks-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +44,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -115,6 +140,8 @@
       <workItem from="1605555303388" duration="1052000" />
       <workItem from="1605559370697" duration="2165000" />
       <workItem from="1605563912013" duration="7333000" />
+      <workItem from="1606945915923" duration="31000" />
+      <workItem from="1606946038854" duration="1863000" />
     </task>
     <servers />
   </component>
