@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5eb78b0-6714-41d1-995e-1d5f04fa60e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppWithRedux.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppWithRedux.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithRedux.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/tasks-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/todolists.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +41,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="es6.move.members.recent.items">
-      <recent name="$PROJECT_DIR$/src/EditableSpan.tsx" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/state" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/Task.tsx" />
+      <recent name="$PROJECT_DIR$/src/EditableSpan.tsx" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.user reducer should increment only childrenCount">

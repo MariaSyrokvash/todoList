@@ -27,7 +27,6 @@ export type TaskStateType = {
 }
 
 function App() {
-
 	const toDoListsFirst = v1();
 	const toDoListsSecond = v1();
 

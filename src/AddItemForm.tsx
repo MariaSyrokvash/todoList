@@ -6,24 +6,24 @@ type AddItemFormPropsType = {
 	addItem: (title: string) => void
 }
 
-function AddItemForm(props: AddItemFormPropsType) {
+const AddItemForm = React.memo((props: AddItemFormPropsType) => {
+	console.log('AddItemForm is rendered')
 	const [newTaskTitle, setTitle] = useState('');
 	const [error, setError] = useState<string | null>(null);
+
 	const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		setTitle(event.currentTarget.value)
 	}
-	const onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-		setError(null);
 
-		if (newTaskTitle.trim() !== '') {
-			if (event.key === 'Enter') {
-				props.addItem(newTaskTitle);
-				setTitle('');
-			}
-		} else {
-			setError('This field is required')
+	const onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+		if (error !== null) {
+			setError(null);
+		}
+		if (event.key === 'Enter') {
+			onCLickAddTaskHandler();
 		}
 	}
+
 	const onCLickAddTaskHandler = () => {
 		if (newTaskTitle.trim() !== '') {
 			props.addItem(newTaskTitle.trim());
@@ -39,14 +39,14 @@ function AddItemForm(props: AddItemFormPropsType) {
 			{/*			 className={error ? 'input-error' : ''}/>*/}
 			<TextField variant={'outlined'} id="outlined-basic" label="Enter your task.."
 								 value={newTaskTitle} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}
-								 error={ !!error}
+								 error={!!error}
 								 helperText={error}
 			/>
-			<IconButton onClick={onCLickAddTaskHandler} color={'primary'}> <AddCircleOutlineSharpIcon /> </IconButton>
+			<IconButton onClick={onCLickAddTaskHandler} color={'primary'}> <AddCircleOutlineSharpIcon/> </IconButton>
 			{/*{error && <div className='error-message'>{error}</div>}*/}
 		</div>
 	)
-}
+})
 
 
 export default AddItemForm
