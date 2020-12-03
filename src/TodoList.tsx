@@ -57,7 +57,7 @@ export const TodoList = React.memo((props: PropsType) => {
 			</div>
 			<ul>
 				{
-					props.tasks.map(task => {
+					tasksForTodoList.map(task => {
 						return <Task
 							task={task}
 							changeTaskTitle={props.changeTaskTitle}
