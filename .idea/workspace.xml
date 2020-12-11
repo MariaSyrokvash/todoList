@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5eb78b0-6714-41d1-995e-1d5f04fa60e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/todolists_api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Button.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Header.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Header.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Page.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/button.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/page.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +94,7 @@
       <workItem from="1606946038854" duration="2499000" />
       <workItem from="1606991125422" duration="4285000" />
       <workItem from="1607632045269" duration="67000" />
-      <workItem from="1607633436096" duration="12089000" />
+      <workItem from="1607633436096" duration="12278000" />
     </task>
     <servers />
   </component>
