@@ -13,24 +13,15 @@ import {Container, Grid, Paper} from '@material-ui/core';
 import {
 	addTodolistTitleAC,
 	changeTodolistFilterAC,
-	changeTodolistTitleAC,
+	changeTodolistTitleAC, FilterValuesType,
 	removeTodolistAC,
 	todolistsReducer
 } from './state/todolists-reducer';
 import {addTaskAC, changeStatusTaskAC, changeTitleTaskAC, removeTaskAC, tasksReducer} from './state/tasks-reducer';
-import {act} from 'react-dom/test-utils';
+import {TaskStatuses, TaskType, TodoTaskPriories} from './api/todolists_api';
 
-export type FilterValuesType = 'all' | 'completed' | 'active'
-export type TaskType = {
-	id: string
-	title: string
-	isDone: boolean
-}
-export type TodoListType = {
-	id: string
-	title: string
-	filter: FilterValuesType
-}
+
+
 export type TaskStateType = {
 	[key: string]: Array<TaskType>
 }
@@ -41,20 +32,38 @@ function AppWithReducers() {
 	const toDoListsSecond = v1();
 
 	const [toDoLists, dispatchToDoListsReducer] = useReducer(todolistsReducer, [
-		{id: toDoListsFirst, title: 'Who killed Kennedy?', filter: 'all'},
-		{id: toDoListsSecond, title: 'What is your fav country?', filter: 'all'}
+		{id: toDoListsFirst, title: 'Who killed Kennedy?', filter: 'all', order: 0, addedDate: ''},
+		{id: toDoListsSecond, title: 'What is your fav country?', filter: 'all', order: 0, addedDate: ''}
 	])
 
 	const [tasksObj, dispatchTasksReducer] = useReducer(tasksReducer, {
 		[toDoListsFirst]: [
-			{id: v1(), title: 'Lykaskenko', isDone: false},
-			{id: v1(), title: 'Lincoln', isDone: false},
-			{id: v1(), title: 'Johnson', isDone: true}
+			{
+				id: v1(), title: 'Lykaskenko', status: TaskStatuses.Completed, todoListId: toDoListsFirst,
+				startDate: '', deadline: '', addedDate: '', order: 0, priority: TodoTaskPriories.Low, description: ''
+			},
+			{
+				id: v1(), title: 'Lincoln', status: TaskStatuses.InProgress, todoListId: toDoListsFirst,
+				startDate: '', deadline: '', addedDate: '', order: 0, priority: TodoTaskPriories.Low, description: ''
+			},
+			{
+				id: v1(), title: 'Johnson', status: TaskStatuses.Completed, todoListId: toDoListsFirst,
+				startDate: '', deadline: '', addedDate: '', order: 0, priority: TodoTaskPriories.Low, description: ''
+			}
 		],
 		[toDoListsSecond]: [
-			{id: v1(), title: 'Great Britain', isDone: false},
-			{id: v1(), title: 'France', isDone: false},
-			{id: v1(), title: 'Belarus', isDone: true}
+			{
+				id: v1(), title: 'Great Britain', status: TaskStatuses.InProgress, todoListId: toDoListsSecond,
+				startDate: '', deadline: '', addedDate: '', order: 0, priority: TodoTaskPriories.Low, description: ''
+			},
+			{
+				id: v1(), title: 'France', status: TaskStatuses.New, todoListId: toDoListsSecond,
+				startDate: '', deadline: '', addedDate: '', order: 0, priority: TodoTaskPriories.Low, description: ''
+			},
+			{
+				id: v1(), title: 'Belarus', status: TaskStatuses.Completed, todoListId: toDoListsSecond,
+				startDate: '', deadline: '', addedDate: '', order: 0, priority: TodoTaskPriories.Low, description: ''
+			}
 		]
 	})
 
@@ -68,8 +77,8 @@ function AppWithReducers() {
 		dispatchTasksReducer(action)
 	}
 
-	function changeStatus(id: string, isDone: boolean, toDoListID: string) {
-		const action = changeStatusTaskAC(id, isDone, toDoListID);
+	function changeStatus(id: string, status: TaskStatuses, toDoListID: string) {
+		const action = changeStatusTaskAC(id, status, toDoListID);
 		dispatchTasksReducer(action)
 	}
 
@@ -124,11 +133,11 @@ function AppWithReducers() {
 
 
 						if (toDoList.filter === 'completed') {
-							tasksForTodoList = tasksObj[toDoList.id].filter(task => task.isDone === true)
+							tasksForTodoList = tasksObj[toDoList.id].filter(task => task.status === TaskStatuses.New)
 						}
 
 						if (toDoList.filter === 'active') {
-							tasksForTodoList = tasksObj[toDoList.id].filter(task => task.isDone === false)
+							tasksForTodoList = tasksObj[toDoList.id].filter(task => task.status === TaskStatuses.Completed)
 						}
 						return (
 							<Grid item>
