@@ -7,7 +7,7 @@ const settings = {
 	}
 }
 
-const instance = axios.create( {
+const instance = axios.create({
 	baseURL: 'https://social-network.samuraijs.com/api/1.1/',
 	...settings
 })
@@ -37,15 +37,30 @@ type GetTaskType = {
 	items: Array<TaskType>
 }
 
+export enum TaskStatuses {
+	New = 0,
+	InProgress = 1,
+	Completed = 2,
+	Draft = 3
+}
+
+export enum TodoTaskPriories  {
+	Low = 0,
+	Middle = 1,
+	Hi = 2,
+	Urgently = 3,
+	Later = 4
+}
+
 export type TaskType = {
 	description: string
 	title: string
-	status: number
-	priority: number
+	status: TaskStatuses
+	priority: TodoTaskPriories
 	startDate: string
 	deadline: string
 	id: string
-	todoListId:string
+	todoListId: string
 	order: number
 	addedDate: string
 }
@@ -85,7 +100,7 @@ export const todolistsAPI = {
 	},
 
 	createTask(todolistId: string, title: string) {
-		return instance.post<ResponseType<TaskType>>(`todo-lists/${todolistId}/tasks`, {title} )
+		return instance.post<ResponseType<TaskType>>(`todo-lists/${todolistId}/tasks`, {title})
 	},
 
 	updateTask(todolistId: string, taskId: string, model: UpdateTaskModel) {
