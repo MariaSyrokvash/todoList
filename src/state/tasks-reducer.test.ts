@@ -1,6 +1,13 @@
-import {addTaskAC, changeStatusTaskAC, changeTitleTaskAC, removeTaskAC, tasksReducer} from './tasks-reducer';
+import {
+	addTaskAC,
+	changeStatusTaskAC,
+	changeTitleTaskAC,
+	removeTaskAC,
+	setTasksAC,
+	tasksReducer
+} from './tasks-reducer';
 import {TaskStateType} from '../App';
-import {addTodolistTitleAC, removeTodolistAC} from './todolists-reducer';
+import {addTodolistTitleAC, removeTodolistAC, setTodolistAC} from './todolists-reducer';
 import {TaskStatuses, TodoTaskPriories} from '../api/todolists_api';
 
 
@@ -115,3 +122,33 @@ test('property with todolistId should be deleted', () => {
 	expect(keys.length).toBe(1);
 	expect(endState['todolistId2']).not.toBeDefined();
 });
+
+test('empty arrays should be added whrn we set todolists', () => {
+
+	const action = setTodolistAC([
+		{id: '1', title: 'Who killed Kennedy?',  order: 0, addedDate: ''},
+		{id: '2', title: 'What is your fav country?', order: 0, addedDate: ''}
+	])
+
+	const endState = tasksReducer({}, action)
+
+	const keys = Object.keys(endState);
+	expect(keys.length).toBe(2);
+	expect(endState['1']).toStrictEqual([])
+	expect(endState['2']).toStrictEqual([])
+});
+
+test('tasks should be added for todolist', () => {
+
+	const action = setTasksAC(startState['todolistId1'], 'todolistId1')
+
+	const endState = tasksReducer({
+		'todolistId2': [],
+		'todolistId1': []
+	}, action)
+
+
+	expect(endState['todolistId1'].length).toBe(3)
+	expect(endState['todolistId2'].length).toBe(0)
+});
+
