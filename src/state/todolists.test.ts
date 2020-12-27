@@ -7,6 +7,7 @@ import {
 } from './todolists-reducer';
 import {v1} from 'uuid';
 import {FilterValuesType} from '../AppWithRedux';
+import {TodoListType} from '../api/todolists_api';
 
 let startState: Array<TodoListDomainType> = []
 
@@ -36,12 +37,17 @@ test('correct todolist should be added', () => {
 	let todolistId1 = v1();
 	let todolistId2 = v1();
 
-	let newTodolistTitle = 'New Todolist';
+	let todolist: TodoListType = {
+		title: 'New Todolist',
+		id: 'any id',
+		addedDate: '',
+		order: 0
+	};
 
-	const endState = todolistsReducer(startState, addTodolistTitleAC(newTodolistTitle))
+	const endState = todolistsReducer(startState, addTodolistTitleAC(todolist))
 
 	expect(endState.length).toBe(3);
-	expect(endState[0].title).toBe(newTodolistTitle);
+	expect(endState[0].title).toBe(todolist.title);
 	expect(endState[2].filter).toBe('all');
 });
 

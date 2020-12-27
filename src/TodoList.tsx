@@ -5,7 +5,7 @@ import {Delete} from '@material-ui/icons';
 import {EditableSpan} from './EditableSpan';
 import {Task} from './Task';
 import {TaskStatuses, TaskType} from './api/todolists_api';
-import {fetchTodoList, FilterValuesType} from './state/todolists-reducer';
+import { FilterValuesType} from './state/todolists-reducer';
 import {useDispatch} from 'react-redux';
 import {fetchTasks} from './state/tasks-reducer';
 

@@ -1,10 +1,8 @@
 import {
-	addTaskAC,
-	changeStatusTaskAC,
-	changeTitleTaskAC,
+	AddTaskAC,
 	removeTaskAC,
 	setTasksAC,
-	tasksReducer
+	tasksReducer, updateTaskAC
 } from './tasks-reducer';
 import {TaskStateType} from '../App';
 import {addTodolistTitleAC, removeTodolistAC, setTodolistAC} from './todolists-reducer';
@@ -59,20 +57,31 @@ test('correct task should be deleted from correct array', () => {
 
 
 test('correct task should be added to correct array', () => {
-	const action = addTaskAC('juce', 'todolistId2');
+	const action = AddTaskAC({
+		todoListId: 'todolistId2',
+		title: 'juice',
+		status: TaskStatuses.New,
+		addedDate: '',
+		deadline: '',
+		description: '',
+		startDate: '',
+		order: 0,
+		priority: 0,
+		id: 'exists'
+	});
 
 	const endState = tasksReducer(startState, action)
 
 	expect(endState['todolistId1'].length).toBe(3);
 	expect(endState['todolistId2'].length).toBe(4);
 	expect(endState['todolistId2'][0].id).toBeDefined();
-	expect(endState['todolistId2'][0].title).toBe('juce');
+	expect(endState['todolistId2'][0].title).toBe('juice');
 	expect(endState['todolistId2'][0].status).toBe(TaskStatuses.New);
 })
 
 
 test('status of specified task should be changed', () => {
-	const action = changeStatusTaskAC('2', TaskStatuses.New, 'todolistId2');
+	const action = updateTaskAC('2', {status: TaskStatuses.New}, 'todolistId2');
 
 	const endState = tasksReducer(startState, action)
 
@@ -83,7 +92,7 @@ test('status of specified task should be changed', () => {
 
 
 test('title of specified task should be changed', () => {
-	const action = changeTitleTaskAC('2', 'snickers', 'todolistId2');
+	const action = updateTaskAC('2', {title: 'snickers'}, 'todolistId2');
 
 	const endState = tasksReducer(startState, action)
 
@@ -94,7 +103,12 @@ test('title of specified task should be changed', () => {
 
 test('new property should be added when new todolist is added', () => {
 
-	const action = addTodolistTitleAC('new todolist');
+	const action = addTodolistTitleAC({
+		id: '1111',
+		title: 'new todolist',
+		order: 0,
+		addedDate: ''
+	});
 
 	const endState = tasksReducer(startState, action)
 
