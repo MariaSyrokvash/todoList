@@ -22,8 +22,8 @@ function App() {
 	const toDoListsSecond = v1();
 
 	const [toDoLists, setToDoList] = useState<Array<TodoListDomainType>>([
-		{id: toDoListsFirst, title: 'Who killed Kennedy?', filter: 'all', order: 0, addedDate: ''},
-		{id: toDoListsSecond, title: 'What is your fav country?', filter: 'all', order: 0, addedDate: ''}
+		{id: toDoListsFirst, title: 'Who killed Kennedy?', filter: 'all', order: 0, addedDate: '', entityStatus: 'idle'},
+		{id: toDoListsSecond, title: 'What is your fav country?', filter: 'all', order: 0, addedDate: '', entityStatus: 'idle'}
 	])
 
 	const [tasksObj, setTasks] = useState<TaskStateType>({
@@ -118,7 +118,8 @@ function App() {
 			filter: 'all',
 			title: title,
 			addedDate: '',
-			order: 0
+			order: 0,
+			entityStatus: 'idle'
 		}
 		setToDoList([toDoList, ...toDoLists]);
 		setTasks({

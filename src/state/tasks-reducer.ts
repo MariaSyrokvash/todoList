@@ -3,6 +3,7 @@ import {addTodoListActionType, removeTodoListActionType, setTodoListsActionType}
 import {TaskType, todolistsAPI, UpdateTaskModel} from '../api/todolists_api';
 import {Dispatch} from 'redux';
 import {AppRootState} from './store';
+import {setError, setErrorType, setStatus, setStatusType} from './app-reducer';
 
 
 type removeTaskACType = {
@@ -46,6 +47,8 @@ type ActionsType =
 	| removeTodoListActionType
 	| setTodoListsActionType
 	| setTasksActionType
+	| setStatusType
+	| setErrorType
 
 const initialState: TaskStateType = {}
 
@@ -74,7 +77,7 @@ export const tasksReducer = (state: TaskStateType = initialState, action: Action
 			const findToDoList = state[action.toDoListID];
 			state[action.toDoListID] = findToDoList
 				.map(task => task.id === action.id ?
-					{...task,  ...action.model}
+					{...task, ...action.model}
 					:
 					task
 				)
@@ -142,14 +145,16 @@ export const setTasksAC = (tasks: Array<TaskType>, todolistID: string): setTasks
 }
 
 export const fetchTasks = (todolistID: string) => {
-	return (dispatch: Dispatch) => {
+	return (dispatch: Dispatch<ActionsType>) => {
+		dispatch(setStatus('loading'))
 		todolistsAPI.getTasks(todolistID)
 			.then(res => dispatch(setTasksAC(res.data.items, todolistID)))
+		dispatch(setStatus('succeeded'))
 	}
 }
 
 export const removeTaskTC = (taskID: string, toDoListID: string) => {
-	return (dispatch: Dispatch) => {
+	return (dispatch: Dispatch<ActionsType>) => {
 		todolistsAPI.deleteTask(toDoListID, taskID)
 			.then((res) => {
 				dispatch(removeTaskAC(taskID, toDoListID))
@@ -158,12 +163,23 @@ export const removeTaskTC = (taskID: string, toDoListID: string) => {
 }
 
 export const addTaskTC = (title: string, toDoListID: string) => {
-	return (dispatch: Dispatch) => {
+	return (dispatch: Dispatch<ActionsType | setErrorType>) => {
+		dispatch(setStatus('loading'))
 		todolistsAPI.createTask(toDoListID, title)
 			.then((res) => {
-				const task = res.data.data.item
-				const action = AddTaskAC(task)
-				dispatch(action)
+				if (res.data.resultCode === 0) {
+					const task = res.data.data.item
+					const action = AddTaskAC(task)
+					dispatch(action)
+					dispatch(setStatus('succeeded'))
+				} else {
+					if (res.data.messages.length) {
+						dispatch(setError(res.data.messages[0]))
+					} else {
+						dispatch(setError('Sorry^ some error occurred'))
+					}
+					dispatch(setStatus('failed'))
+				}
 			})
 	}
 }
