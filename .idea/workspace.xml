@@ -2,19 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5eb78b0-6714-41d1-995e-1d5f04fa60e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ErrorSnackBar/ErrorSnackBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state/app-reducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state/app-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/error-utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddItemForm.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/AddItemForm.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddItemForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppWithRedux.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/AppWithRedux.stories.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppWithRedux.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithRedux.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EditableSpan.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/EditableSpan.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/todolists_api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolists_api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ErrorSnackBar/ErrorSnackBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ErrorSnackBar/ErrorSnackBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/app-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/app-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/app-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/tasks-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/state/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists-tasks-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/todolists.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stories/ReduxStoreProviderDecorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/ReduxStoreProviderDecorator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/todolistsApi.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +34,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1j1JBK6q1ZjIfNdhUDw4O779KRT" />
   <component name="ProjectViewState">
@@ -57,8 +69,25 @@
       <recent name="$PROJECT_DIR$/src/Task.tsx" />
       <recent name="$PROJECT_DIR$/src/EditableSpan.tsx" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/stories" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.run">
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="correct entity status of todolist should be changed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/state/todolists.test.ts" />
+      <test-names>
+        <test-name value="correct entity status of todolist should be changed" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="eject" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -69,9 +98,9 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="run" type="js.build_tools.npm">
+    <configuration name="npm start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="npm" />
+      <command value="start" />
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
@@ -107,7 +136,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.run" />
+      <item itemvalue="Jest.correct entity status of todolist should be changed" />
+      <item itemvalue="npm.npm start" />
       <item itemvalue="npm.eject" />
       <item itemvalue="npm.start" />
       <item itemvalue="npm.storybook" />
@@ -115,10 +145,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.test" />
-        <item itemvalue="npm.eject" />
+        <item itemvalue="Jest.correct entity status of todolist should be changed" />
         <item itemvalue="npm.storybook" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.eject" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +183,11 @@
       <workItem from="1609079064306" duration="6295000" />
       <workItem from="1609103314246" duration="82000" />
       <workItem from="1609103535377" duration="3582000" />
-      <workItem from="1609277818905" duration="5737000" />
+      <workItem from="1609277818905" duration="5845000" />
+      <workItem from="1609688999242" duration="9525000" />
+      <workItem from="1609700042721" duration="12367000" />
+      <workItem from="1609713324651" duration="239000" />
+      <workItem from="1609713568525" duration="96000" />
     </task>
     <servers />
   </component>

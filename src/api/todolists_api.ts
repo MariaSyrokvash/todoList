@@ -23,7 +23,7 @@ type CreateDataResponseType = {
 	item: TodoListType
 }
 
-type ResponseType<R = {}> = {
+export type ResponseType<R = {}> = {
 	resultCode: number
 	messages: Array<string>
 	data: R

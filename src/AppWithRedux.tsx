@@ -24,7 +24,6 @@ import {CustomizedSnackbars} from './components/ErrorSnackBar/ErrorSnackBar';
 import {RequestStatusType} from './state/app-reducer';
 
 export type FilterValuesType = 'all' | 'completed' | 'active'
-
 export type TodoListType = {
 	id: string
 	title: string
@@ -34,13 +33,20 @@ export type TaskStateType = {
 	[key: string]: Array<TaskType>
 }
 
-function AppWithRedux() {
+type  PropsType = {
+	demo?: boolean
+}
+
+const AppWithRedux: React.FC<PropsType> = ({ demo= false }) => {
 
 	const dispatch = useDispatch()
 	const toDoLists = useSelector<AppRootState, Array<TodoListDomainType>>(state => state.todolists);
 	const tasks = useSelector<AppRootState, TaskStateType>(state => state.tasks);
 
 	useEffect(() => {
+		if (demo) {
+			return
+		}
 		dispatch(fetchTodoListTC())
 	}, [])
 
@@ -67,6 +73,7 @@ function AppWithRedux() {
 	}, [dispatch])
 
 	const removeTodoList = useCallback((toDoListID: string) => {
+		console.log(toDoListID)
 		dispatch(removeTodoListTC(toDoListID))
 	}, [dispatch])
 
@@ -109,18 +116,18 @@ function AppWithRedux() {
 							return (
 								<Grid item>
 									<Paper key={toDoList.id} style={{padding: '13px'}}>
-										<TodoList title={toDoList.title}
+										<TodoList
+															todolist={toDoList}
 															tasks={tasksForTodoList}
 															removeTask={removeTask}
 															addTask={addTask}
 															changeFilter={changeFilter}
 															changeStatus={changeStatus}
-															filter={toDoList.filter}
-															id={toDoList.id}
 															key={toDoList.id}
 															removeTodoList={removeTodoList}
 															changeTaskTitle={changeTaskTitle}
 															changeTodoListTitle={changeTodoListTitle}
+															demo={demo}
 										/>
 									</Paper>
 								</Grid>

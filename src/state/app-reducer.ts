@@ -36,9 +36,9 @@ type ActionsType = setErrorType | setStatusType
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
-export const setError = (error: string | null) => ({type: 'APP/SET-ERROR', error } as const)
-export const setStatus = (status: RequestStatusType ) => ({type: 'APP/SET-STATUS', status } as const)
+export const setAppError = (error: string | null) => ({type: 'APP/SET-ERROR', error } as const)
+export const setAppStatus = (status: RequestStatusType ) => ({type: 'APP/SET-STATUS',  status } as const)
 
 
-export type setErrorType = ReturnType<typeof setError>
-export type setStatusType = ReturnType<typeof setStatus>
+export type setErrorType = ReturnType<typeof setAppError>
+export type setStatusType = ReturnType<typeof setAppStatus>

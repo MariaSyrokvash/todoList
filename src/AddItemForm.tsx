@@ -4,9 +4,10 @@ import AddCircleOutlineSharpIcon from '@material-ui/icons/AddCircleOutlineSharp'
 
 export type AddItemFormPropsType = {
 	addItem: (title: string) => void
+	disabled?: boolean
 }
 
-const AddItemForm = React.memo((props: AddItemFormPropsType) => {
+const AddItemForm = React.memo(function ({disabled = false, addItem}: AddItemFormPropsType) {
 	const [newTaskTitle, setTitle] = useState('');
 	const [error, setError] = useState<string | null>(null);
 
@@ -25,7 +26,7 @@ const AddItemForm = React.memo((props: AddItemFormPropsType) => {
 
 	const onCLickAddTaskHandler = () => {
 		if (newTaskTitle.trim() !== '') {
-			props.addItem(newTaskTitle.trim());
+			addItem(newTaskTitle.trim());
 			setTitle('');
 		} else {
 			setError('This field is required')
@@ -34,15 +35,15 @@ const AddItemForm = React.memo((props: AddItemFormPropsType) => {
 
 	return (
 		<div>
-			{/*<input value={newTaskTitle} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}*/}
-			{/*			 className={error ? 'input-error' : ''}/>*/}
 			<TextField variant={'outlined'} id="outlined-basic" label="Enter your task.."
 								 value={newTaskTitle} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}
 								 error={!!error}
 								 helperText={error}
+								 disabled={disabled}
 			/>
-			<IconButton onClick={onCLickAddTaskHandler} color={'primary'}> <AddCircleOutlineSharpIcon/> </IconButton>
-			{/*{error && <div className='error-message'>{error}</div>}*/}
+			<IconButton onClick={onCLickAddTaskHandler} color={'primary'} disabled={disabled}>
+				<AddCircleOutlineSharpIcon />
+			</IconButton>
 		</div>
 	)
 })
