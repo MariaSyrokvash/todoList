@@ -1,11 +1,8 @@
 import React from 'react';
-import AppWithRedux from './AppWithRedux';
-import {ReduxStoreProviderDecorator} from './stories/ReduxStoreProviderDecorator';
+import {ReduxStoreProviderDecorator} from './ReduxStoreProviderDecorator';
 import {Meta, Story} from '@storybook/react';
-import {EditableSpan, EditableSpanPropsType} from './EditableSpan';
-import {action} from '@storybook/addon-actions';
-import {Provider} from 'react-redux';
-import {store} from './state/store';
+import AppWithRedux from '../AppWithRedux';
+
 
 
 export default {
@@ -17,7 +14,7 @@ export default {
 
 export const AppWithReduxBaseExample = () => {
 	return <>
-		<AppWithRedux/>
+		<AppWithRedux demo={true}/>
 	</>
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import AddItemForm, {AddItemFormPropsType} from './AddItemForm';
 import {Meta, Story} from '@storybook/react/types-6-0';
 import {action} from '@storybook/addon-actions';
+import AddItemForm, {AddItemFormPropsType} from '../AddItemForm';
 
 export default {
 	title: 'AddItemForm/Component',
@@ -25,3 +25,10 @@ export const AddItemFormExample = Template.bind({});
 AddItemFormExample.args = {
 	addItem: action('action from AddItemForm')
 };
+
+export const AddItemFormDisableExample = (props: any) => {
+	return (
+		<AddItemForm disabled={true} addItem={action('button imside form clicked') } />
+	)
+}
+
