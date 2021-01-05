@@ -1,25 +1,25 @@
 import React from 'react';
 import {ReduxStoreProviderDecorator} from './ReduxStoreProviderDecorator';
 import {Meta, Story} from '@storybook/react';
-import AppWithRedux from '../AppWithRedux';
+import {App} from '../App';
 
 
 
 export default {
-	title: 'AppWithRedux/Component',
-	component: AppWithRedux,
+	title: 'App/Component',
+	component: App,
 	decorators: [ReduxStoreProviderDecorator]
 } as Meta;
 
 
 export const AppWithReduxBaseExample = () => {
 	return <>
-		<AppWithRedux demo={true}/>
+		<App demo={true}/>
 	</>
 }
 
 //new version
-const Template: Story = (args) =>  <AppWithRedux />
+const Template: Story = (args) =>  <App />
 export const AppWithReduxBaseExampleNewVersion = Template.bind({});
 AppWithReduxBaseExampleNewVersion.args = {
 

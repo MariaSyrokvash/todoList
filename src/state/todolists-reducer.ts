@@ -1,6 +1,8 @@
 import {todolistsAPI, TodoListType} from '../api/todolists_api';
 import {Dispatch} from 'redux';
 import {RequestStatusType, setAppStatus, setErrorType, setStatusType} from './app-reducer';
+import {handleNetworkError, handleServerError} from '../utils/error-utils';
+import {ActionsTasksType} from './tasks-reducer';
 
 
 export type removeTodoListActionType = {
@@ -118,12 +120,15 @@ export const setTodolistAC = (todolist: Array<TodoListType>): setTodoListsAction
 
 
 export const fetchTodoListTC = () => {
-	return (dispatch: Dispatch<ActionsType>) => {
+	return (dispatch: Dispatch<ActionsType | ActionsTasksType>) => {
 		dispatch(setAppStatus('loading'))
 		todolistsAPI.getTodolists()
 			.then(res => {
 				dispatch(setTodolistAC(res.data))
 				dispatch(setAppStatus('succeeded'))
+			})
+			.catch(error => {
+				handleNetworkError(error, dispatch)
 			})
 	}
 }
