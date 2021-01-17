@@ -1,4 +1,4 @@
-import {TaskStateType} from '../App';
+import {TaskStateType} from '../old/AppLocalState';
 import {
 	addTodolistTitleAC,
 	changeTodolistEntityStatusAC,
