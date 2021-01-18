@@ -32,6 +32,8 @@ type  PropsType = {
 }
 
 export const App: React.FC<PropsType> = ({demo = false}) => {
+
+	// @ts-ignore
 	const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
 	const isInitialized = useSelector<AppRootState, boolean>(state => state.app.isInitialized)
 	const dispatch = useDispatch();
