@@ -75,6 +75,7 @@ export const App: React.FC<PropsType> = ({demo = false}) => {
 						<Container fixed>
 
 							<Switch >
+								<Route path={'/todoList'} exact render={() => <Redirect to={'/'}/>}/>
 								<Route path={'/'} exact render={() => <TodoLists demo={demo}/>}/>
 								<Route path={'/login'} render={() => <Login/> }/>
 								<Route path={'*'} render={() => <h1>404: PAGE NOT FOUND</h1>}/>
