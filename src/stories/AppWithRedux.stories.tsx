@@ -1,14 +1,14 @@
 import React from 'react';
-import {ReduxStoreProviderDecorator} from './ReduxStoreProviderDecorator';
+import {BrowserRouterDecorator, ReduxStoreProviderDecorator} from './ReduxStoreProviderDecorator';
 import {Meta, Story} from '@storybook/react';
 import {App} from '../App';
-
 
 
 export default {
 	title: 'App/Component',
 	component: App,
-	decorators: [ReduxStoreProviderDecorator]
+	// decorators: [ReduxStoreProviderDecorator, StoryRouter()]
+	decorators: [ReduxStoreProviderDecorator, BrowserRouterDecorator]
 } as Meta;
 
 

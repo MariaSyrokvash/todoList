@@ -26,8 +26,8 @@ const slice = createSlice({
 				tasks.splice(index, 1)
 			}
 		},
-		addTaskAC(state, action: PayloadAction<{ task: TaskType }>) {
-			state[action.payload.task.todoListId].unshift(action.payload.task)
+		addTaskAC(state, action: PayloadAction<TaskType>) {
+			state[action.payload.todoListId].unshift(action.payload)
 		},
 		updateTaskAC(state, action: PayloadAction<{ id: string, model: UpdateDomainTaskModelType, toDoListID: string }>) {
 			const tasks = state[action.payload.toDoListID]
@@ -99,7 +99,7 @@ export const addTaskTC = (title: string, toDoListID: string) => {
 			.then((res) => {
 				if (res.data.resultCode === 0) {
 					const task = res.data.data.item
-					const action = addTaskAC({task: task})
+					const action = addTaskAC(task)
 					dispatch(action)
 					dispatch(setAppStatus({status: 'succeeded'}))
 				} else {
