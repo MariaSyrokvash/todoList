@@ -47,47 +47,45 @@ export const App: React.FC<PropsType> = ({demo = false}) => {
 
 	const logoutHandler = useCallback(() => {
 		dispatch(logoutTC())
-	},[])
+	}, [])
 
 
 	if (!isInitialized) {
-		return <div className='circularProgressBox'><CircularProgress color="secondary"  /></div>
+		return <div className='circularProgressBox'><CircularProgress color="secondary"/></div>
 	}
 
 
 	return (
 		<>
-			<BrowserRouter>
-					<div className="App">
-						<CustomizedSnackbars/>
-						<AppBar position="static">
-							<Toolbar>
-								<IconButton edge="start" color="inherit" aria-label="menu">
-									<MenuIcon/>
-								</IconButton>
-								<Typography variant="h6"></Typography>
-								{isLoggedIn && <Button color="inherit" onClick={logoutHandler}>Log out</Button>}
-							</Toolbar>
-						</AppBar>
+			<div className="App">
+				<CustomizedSnackbars/>
+				<AppBar position="static">
+					<Toolbar>
+						<IconButton edge="start" color="inherit" aria-label="menu">
+							<MenuIcon/>
+						</IconButton>
+						<Typography variant="h6"></Typography>
+						{isLoggedIn && <Button color="inherit" onClick={logoutHandler}>Log out</Button>}
+					</Toolbar>
+				</AppBar>
 
-						{status === 'loading' && <LinearProgress/>}
+				{status === 'loading' && <LinearProgress/>}
 
-						<Container fixed>
+				<Container fixed>
 
-							<Switch >
-								<Route path={'/todoList'} exact render={() => <Redirect to={'/'}/>}/>
-								<Route path={'/'} exact render={() => <TodoLists demo={demo}/>}/>
-								<Route path={'/login'} render={() => <Login/> }/>
-								<Route path={'*'} render={() => <h1>404: PAGE NOT FOUND</h1>}/>
-								<Redirect from={'*'} to={'/404'}/>
-							</Switch>
+					<Switch>
+						<Route path={'/todoList'} exact render={() => <Redirect to={'/'}/>}/>
+						<Route path={'/'} exact render={() => <TodoLists demo={demo}/>}/>
+						<Route path={'/login'} render={() => <Login/>}/>
+						<Route path={'*'} render={() => <h1>404: PAGE NOT FOUND</h1>}/>
+						<Redirect from={'*'} to={'/404'}/>
+					</Switch>
 
-						</Container>
-					</div>
-			</BrowserRouter>
+				</Container>
+			</div>
 		</>
 
-);
+	);
 }
 
 

@@ -16,10 +16,16 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 // 	isInitialized: boolean
 // }
 
-const initialState = {
+const initialState: initialAppStateType = {
 	status: 'idle',
 	error: null,
 	isInitialized: false
+}
+
+export type initialAppStateType = {
+	status: string,
+	error: null | string,
+	isInitialized: boolean
 }
 
 const slice = createSlice({
