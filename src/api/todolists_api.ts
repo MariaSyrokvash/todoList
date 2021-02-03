@@ -23,9 +23,15 @@ type CreateDataResponseType = {
 	item: TodoListType
 }
 
+export type FieldErrorType = {
+	field: string
+	error: string
+}
+
 export type ResponseType<R = {}> = {
 	resultCode: number
 	messages: Array<string>
+	fieldsErrors?:  Array<FieldErrorType>
 	data: R
 }
 

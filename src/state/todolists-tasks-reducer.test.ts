@@ -1,9 +1,8 @@
 import {TaskStateType} from '../old/AppLocalState';
 import {
-	addTodolistTitleAC, removeTodoListTC,
+	addTodoListTC,
 	TodoListDomainType,
 	todolistsReducer,
-    removeTodolistAC
 } from './todolists-reducer';
 import {tasksReducer} from './tasks-reducer';
 import {TodoListType} from '../api/todolists_api';
@@ -19,7 +18,7 @@ test('its should be equals', () => {
 		order: 0,
 	}
 
-	const action = addTodolistTitleAC({todolist: todolist});
+	const action = addTodoListTC.fulfilled({todolist: todolist}, 'requestId', todolist.title);
 
 	const endTasksState = tasksReducer(startTasksState, action)
 	const endTodolistsState = todolistsReducer(startTodolistsState, action)

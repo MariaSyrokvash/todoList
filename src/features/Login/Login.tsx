@@ -1,9 +1,9 @@
 import React from 'react'
-import {Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, TextField, Button, Grid} from '@material-ui/core'
+import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from '@material-ui/core'
 import {useFormik} from 'formik';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {authTC} from './auth-reducer';
-import {AppRootState} from '../../state/store';
+import {AppRootState, useAppDispatch} from '../../state/store';
 import {Redirect} from 'react-router-dom';
 
 type FormikErrorType = {
@@ -12,9 +12,14 @@ type FormikErrorType = {
 	rememberMe?: boolean
 }
 
+type FormValuesType = {
+	email: string
+	password: string
+	rememberMe: boolean
+}
 
 export const Login = () => {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
 	const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
 
@@ -40,14 +45,20 @@ export const Login = () => {
 			return errors;
 		},
 
-		onSubmit: values => {
-			dispatch(authTC(values))
+		onSubmit: async (values, formikHelpers) => {
+			const result = await dispatch(authTC(values))
+			if (authTC.rejected.match(result)) {
+				if (result.payload?.fieldsErrors?.length) {
+					const error = result.payload?.fieldsErrors[0]
+					formikHelpers.setFieldError(error.field, error.error)
+				}
+			}
 			formik.resetForm()
 		},
 	});
 
 	if (isLoggedIn) {
-		return <Redirect to={'/'} />
+		return <Redirect to={'/'}/>
 	}
 
 	return <Grid container justify="center">
@@ -71,7 +82,8 @@ export const Login = () => {
 							onBlur={formik.handleBlur}
 							{...formik.getFieldProps('email')}
 						/>
-						{formik.touched.email && formik.errors.email ? <div style={{color: 'red'}}>{formik.errors.email}</div> : null}
+						{formik.touched.email && formik.errors.email ?
+							<div style={{color: 'red'}}>{formik.errors.email}</div> : null}
 						<TextField
 							type="password"
 							label="Password"
@@ -79,7 +91,8 @@ export const Login = () => {
 							onBlur={formik.handleBlur}
 							{...formik.getFieldProps('password')}
 						/>
-						{formik.touched.password && formik.errors.password ? <div style={{color: 'red'}}>{formik.errors.password}</div> : null}
+						{formik.touched.password && formik.errors.password ?
+							<div style={{color: 'red'}}>{formik.errors.password}</div> : null}
 						<FormControlLabel
 							label={'Remember me'}
 							control={<Checkbox
