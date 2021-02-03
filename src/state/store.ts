@@ -6,6 +6,7 @@ import {appReducer} from './app-reducer';
 import {authReducer} from '../features/Login/auth-reducer';
 import {configureStore} from '@reduxjs/toolkit';
 import logger from 'redux-logger';
+import {useDispatch} from 'react-redux';
 
 
 const rootReducer = combineReducers({
@@ -24,6 +25,8 @@ export const store = configureStore({
 	reducer: rootReducer,
 	middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk).concat(logger)
 })
+export type AppDispatchType  = typeof store.dispatch
+export const useAppDispatch = () => useDispatch<AppDispatchType>()
 
 
 // @ts-ignore

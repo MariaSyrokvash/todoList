@@ -36,19 +36,19 @@ const TodoLists: React.FC<PropsType> = ({demo = false}) => {
 	}, [])
 
 	const addTask = useCallback((title: string, toDoListID: string) => {
-		dispatch(addTaskTC(title, toDoListID))
+		dispatch(addTaskTC({title, toDoListID}))
 	}, [dispatch])
 
-	const removeTask = useCallback((id: string, toDoListID: string) => {
-		dispatch(removeTaskTC(id, toDoListID))
+	const removeTask = useCallback((taskID: string, todolistId: string) => {
+		dispatch(removeTaskTC({taskID, todolistId}))
 	}, [dispatch])
 
 	const changeStatus = useCallback((id: string, status: TaskStatuses, toDoListID: string) => {
-		dispatch(updateTaskTC(id, {status: status}, toDoListID))
+		dispatch(updateTaskTC({taskID: id, domainModel: {status}, toDoListID:  toDoListID }))
 	}, [dispatch])
 
 	const changeTaskTitle = useCallback((id: string, newTitle: string, toDoListID: string) => {
-		dispatch(updateTaskTC(id, {title: newTitle}, toDoListID))
+		dispatch(updateTaskTC({taskID: id, domainModel: {title: newTitle}, toDoListID: toDoListID}))
 	}, [dispatch])
 
 
@@ -65,13 +65,12 @@ const TodoLists: React.FC<PropsType> = ({demo = false}) => {
 	}, [dispatch])
 
 	const changeTodoListTitle = useCallback((id: string, newTitle: string) => {
-		dispatch(changeTodolistTitleTC(newTitle, id))
+		dispatch(changeTodolistTitleTC({title: newTitle, id}))
 	}, [])
 
 
-
 	if (!isLoggedIn) {
-		return <Redirect to={'/login'} />
+		return <Redirect to={'/login'}/>
 	}
 
 	return (
@@ -90,18 +89,18 @@ const TodoLists: React.FC<PropsType> = ({demo = false}) => {
 								<Paper key={toDoList.id} style={{padding: '13px'}}>
 
 									<TodoList
-									todolist={toDoList}
-									tasks={tasksForTodoList}
-									removeTask={removeTask}
-									addTask={addTask}
-									changeFilter={changeFilter}
-									changeStatus={changeStatus}
-									key={toDoList.id}
-									removeTodoList={removeTodoList}
-									changeTaskTitle={changeTaskTitle}
-									changeTodoListTitle={changeTodoListTitle}
-									demo={demo}
-								/>
+										todolist={toDoList}
+										tasks={tasksForTodoList}
+										removeTask={removeTask}
+										addTask={addTask}
+										changeFilter={changeFilter}
+										changeStatus={changeStatus}
+										key={toDoList.id}
+										removeTodoList={removeTodoList}
+										changeTaskTitle={changeTaskTitle}
+										changeTodoListTitle={changeTodoListTitle}
+										demo={demo}
+									/>
 
 
 								</Paper>
