@@ -1,11 +1,11 @@
-import {TaskStateType} from '../old/AppLocalState';
+import {TaskStateType} from '../../old/AppLocalState';
 import {
-	addTodoListTC,
+	addTodoList,
 	TodoListDomainType,
 	todolistsReducer,
 } from './todolists-reducer';
 import {tasksReducer} from './tasks-reducer';
-import {TodoListType} from '../api/todolists_api';
+import {TodoListType} from '../../api/todolists_api';
 
 test('its should be equals', () => {
 	const startTasksState: TaskStateType = {};

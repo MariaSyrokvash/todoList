@@ -1,9 +1,10 @@
 import {
-	tasksReducer, fetchTasks, removeTaskTC, addTaskTC, updateTaskTC
+	tasksReducer,
 } from './tasks-reducer';
-import {TaskStateType} from '../old/AppLocalState';
-import {addTodoListTC, fetchTodoListTC, removeTodoListTC} from './todolists-reducer';
-import {TaskStatuses, TodoTaskPriories} from '../api/todolists_api';
+import {TaskStateType} from '../../old/AppLocalState';
+import {addTodoList, fetchTodoList, removeTodoList} from './todolists-reducer';
+import {TaskStatuses, TodoTaskPriories} from '../../api/todolists_api';
+import {addTask, fetchTasks, removeTask, updateTask} from './tasks-action';
 
 
 let startState: TaskStateType = {}
@@ -43,7 +44,7 @@ beforeEach(() => {
 
 test('correct task should be deleted from correct array', () => {
 	const param = {taskID: '2', todolistId: 'todolistId2'}
-	const action = removeTaskTC.fulfilled(param, 'requestId', param);
+	const action = removeTask.fulfilled(param, 'requestId', param);
 	const endState = tasksReducer(startState, action);
 
 	expect(endState['todolistId1'].length).toBe(3);
@@ -66,7 +67,7 @@ test('correct task should be added to correct array', () => {
 		priority: 0,
 		id: 'exists'
 	}
-	const action = addTaskTC.fulfilled(task, 'requestId', {title: task.title, toDoListID: task.todoListId});
+	const action = addTask.fulfilled(task, 'requestId', {title: task.title, toDoListID: task.todoListId});
 
 	const endState = tasksReducer(startState, action)
 
@@ -79,7 +80,7 @@ test('correct task should be added to correct array', () => {
 
 
 test('status of specified task should be changed', () => {
-	const action = updateTaskTC.fulfilled({
+	const action = updateTask.fulfilled({
 		taskID: '2',
 		domainModel: {status: TaskStatuses.New},
 		toDoListID: 'todolistId2'
@@ -94,7 +95,7 @@ test('status of specified task should be changed', () => {
 
 
 test('title of specified task should be changed', () => {
-	const action = updateTaskTC.fulfilled({
+	const action = updateTask.fulfilled({
 		taskID: '2',
 		domainModel: {title: 'snickers'},
 		toDoListID: 'todolistId2'
