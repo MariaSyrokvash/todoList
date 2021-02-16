@@ -4,15 +4,14 @@ import {Button, IconButton, PropTypes, Typography} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import {EditableSpan} from '../../../components/EditableSpan/EditableSpan';
 import {Task} from './Task';
-import {TaskStatuses, TaskType} from '../../../api/todolists_api';
-import {TodoListDomainType} from '../todolists-reducer';
-import {useActions, useAppDispatch} from '../../../app/store';
 import {tasksActions, todolistsActions} from '../index';
 import {FilterValuesType} from '../../../app/App';
-import {useDispatch} from 'react-redux';
+import {useActions, useAppDispatch} from '../../../utils/redux-utils';
+import {TaskStatuses, TaskType} from '../../../api/types';
+import {TodolistDomainType} from '../todolists-reducer';
 
 type PropsType = {
-	todolist: TodoListDomainType
+	todolist: TodolistDomainType
 	tasks: Array<TaskType>
 	demo?: boolean
 }

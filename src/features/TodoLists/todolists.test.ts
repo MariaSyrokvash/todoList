@@ -6,7 +6,7 @@ import {
 import {v1} from 'uuid';
 import {FilterValuesType} from '../../app/App';
 import {TodoListType} from '../../api/todolists_api';
-import {RequestStatusType} from '../../app/app-reducer';
+import {RequestStatusType} from '../Application/application-reducer';
 
 let startState: Array<TodoListDomainType> = []
 console.log(startState)

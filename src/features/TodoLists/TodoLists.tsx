@@ -3,12 +3,13 @@ import {Grid, Paper} from '@material-ui/core';
 import {useSelector} from 'react-redux';
 import AddItemForm, {AddItemFormHelpersType} from '../../components/AddItemForm/AddItemForm';
 import {TodoList} from './TodoList/TodoList';
-import {AppRootState, useActions, useAppDispatch} from '../../app/store';
 import {TaskStateType} from '../../app/App';
 import {Redirect} from 'react-router-dom';
 import {selectIsLoggedIn} from '../Auth/selectors';
-import {tasksActions, todolistsActions} from './index';
-import {TodoListDomainType} from './todolists-reducer';
+import {todolistsActions} from './index';
+import {useActions, useAppDispatch} from '../../utils/redux-utils';
+import {AppRootState} from '../../utils/types';
+import {TodolistDomainType} from './todolists-reducer';
 
 
 type  PropsType = {
@@ -16,7 +17,7 @@ type  PropsType = {
 }
 
 const TodoLists: React.FC<PropsType> = ({demo = false}) => {
-	const toDoLists = useSelector<AppRootState, Array<TodoListDomainType>>(state => state.todolists);
+	const toDoLists = useSelector<AppRootState, Array<TodolistDomainType>>(state => state.todolists);
 	const tasks = useSelector<AppRootState, TaskStateType>(state => state.tasks);
 	const isLoggedIn = useSelector<AppRootState, boolean>(selectIsLoggedIn)
 	const {fetchTodoList} = useActions(todolistsActions)

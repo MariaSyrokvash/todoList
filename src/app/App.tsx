@@ -7,15 +7,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {CircularProgress, Container, LinearProgress} from '@material-ui/core';
-import {useDispatch, useSelector} from 'react-redux';
-import {TaskType} from '../api/todolists_api';
+import {useSelector} from 'react-redux';
 import {CustomizedSnackbars} from '../components/ErrorSnackBar/ErrorSnackBar';
-import {asyncActions} from './app-reducer';
+import {appActions, appSelectors} from '../features/Application';
 import {Redirect, Route, Switch} from 'react-router-dom';
-import {logoutTC} from '../features/Auth/auth-reducer';
-import {authSelectors, Login} from '../features/Auth';
-import {appSelectors} from './index';
+import {authActions, authSelectors, Login} from '../features/Auth';
 import {TodoLists} from '../features/TodoLists';
+import {TaskType} from '../api/types';
+import {useActions} from '../utils/redux-utils';
 
 export type FilterValuesType = 'all' | 'completed' | 'active'
 export type TodoListType = {
@@ -31,19 +30,19 @@ type  PropsType = {
 }
 
 
-
 export const App: React.FC<PropsType> = ({demo = false}) => {
 	const status = useSelector(appSelectors.selectStatus)
 	const isInitialized = useSelector(appSelectors.selectIsInitialized)
 	const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn)
-	const dispatch = useDispatch();
+	const {logout} = useActions(authActions)
+	const {initializedApp} = useActions(appActions)
 
 	useEffect(() => {
-		dispatch(asyncActions.initializedTC())
+		initializedApp()
 	}, [])
 
 	const logoutHandler = useCallback(() => {
-		dispatch(logoutTC())
+		logout()
 	}, [])
 
 	if (!isInitialized) {

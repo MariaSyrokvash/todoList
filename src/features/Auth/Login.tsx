@@ -2,10 +2,11 @@ import React from 'react'
 import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from '@material-ui/core'
 import {useFormik} from 'formik';
 import {useSelector} from 'react-redux';
-import {AppRootState, useActions, useAppDispatch} from '../../app/store';
 import {Redirect} from 'react-router-dom';
 import {selectIsLoggedIn} from './selectors';
 import {authActions} from './index';
+import {useActions, useAppDispatch} from '../../utils/redux-utils';
+import {AppRootState} from '../../utils/types';
 
 type FormikErrorType = {
 	email?: string
@@ -21,7 +22,7 @@ type FormValuesType = {
 
 export const Login = () => {
 	const dispatch = useAppDispatch()
-	const {authTC} = useActions(authActions)
+	const {login} = useActions(authActions)
 	const isLoggedIn = useSelector<AppRootState, boolean>(selectIsLoggedIn)
 
 	const formik = useFormik({
@@ -47,8 +48,8 @@ export const Login = () => {
 		},
 
 		onSubmit: async (values, formikHelpers) => {
-			const result = await dispatch(authTC(values))
-			if (authTC.rejected.match(result)) {
+			const result = await dispatch(login(values))
+			if (login.rejected.match(result)) {
 				if (result.payload?.fieldsErrors?.length) {
 					const error = result.payload?.fieldsErrors[0]
 					formikHelpers.setFieldError(error.field, error.error)

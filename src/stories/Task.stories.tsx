@@ -2,8 +2,8 @@ import React from 'react';
 import {Task, TaskPropsType} from '../features/TodoLists/TodoList/Task';
 import {action} from '@storybook/addon-actions';
 import {Meta, Story} from '@storybook/react';
-import {TaskStatuses, TodoTaskPriories} from '../api/todolists_api';
 import {ReduxStoreProviderDecorator} from './ReduxStoreProviderDecorator';
+import {TaskPriorities, TaskStatuses} from '../api/types';
 
 
 export default {
@@ -21,14 +21,14 @@ export const TaskBaseExample = () => {
 		<Task
 			task={{
 				id: '1', status: TaskStatuses.New, title: 'React', todoListId: 'toDoListsFirst',
-				startDate: '', deadline: '', addedDate: '', order: 0, priority: TodoTaskPriories.Low, description: ''
+				startDate: '', deadline: '', addedDate: '', order: 0, priority: TaskPriorities.Low, description: ''
 			}}
 			todoListID={'todoListID_1'}
 		/>
 		<Task
 			task={{
 				id: '2', title: 'Css', status: TaskStatuses.Completed, todoListId: 'toDoListsFirst',
-				startDate: '', deadline: '', addedDate: '', order: 0, priority: TodoTaskPriories.Low, description: ''
+				startDate: '', deadline: '', addedDate: '', order: 0, priority: TaskPriorities.Low, description: ''
 			}}
 			todoListID={'todoListID_2'}
 		/>
@@ -49,7 +49,7 @@ TaskIsDoneExampleNewVersion.args = {
 		deadline: '',
 		addedDate: '',
 		order: 0,
-		priority: TodoTaskPriories.Low,
+		priority: TaskPriorities.Low,
 		description: ''
 	},
 	todoListID: 'todoListID121'
@@ -66,7 +66,7 @@ TaskIsNotDoneExampleNewVersion.args = {
 		deadline: '',
 		addedDate: '',
 		order: 0,
-		priority: TodoTaskPriories.Low,
+		priority: TaskPriorities.Low,
 		description: ''
 	},
 	todoListID: 'todoListID11'
