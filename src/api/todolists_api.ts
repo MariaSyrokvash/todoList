@@ -37,6 +37,7 @@ export const todolistsAPI = {
 	},
 
 	deleteTask(todolistId: string, taskID: string) {
+		debugger
 		return instance.delete<GenericResponseType>(`todo-lists/${todolistId}/tasks/${taskID}`)
 	},
 

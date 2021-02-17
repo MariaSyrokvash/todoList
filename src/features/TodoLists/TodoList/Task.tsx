@@ -15,6 +15,9 @@ export const Task = React.memo((props: TaskPropsType) => {
 	const {removeTask, updateTask} = useActions(tasksActions)
 
 	const removeTaskHandler = () => {
+		debugger
+		console.log(props.todoListID)
+		console.log(props.task)
 		removeTask({taskId: props.task.id, todolistId: props.todoListID})
 	}
 	const changeStatus = (event: ChangeEvent<HTMLInputElement>) => {

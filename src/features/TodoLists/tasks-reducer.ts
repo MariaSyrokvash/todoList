@@ -23,6 +23,7 @@ export const fetchTasks = createAsyncThunk<{ tasks: TaskType[], todolistId: stri
 
 export const removeTask = createAsyncThunk<{ taskId: string, todolistId: string }, { taskId: string, todolistId: string }, ThunkError>('tasks/removeTask',
 	async (param, thunkAPI) => {
+	debugger
 		const res = await todolistsAPI.deleteTask(param.todolistId, param.taskId)
 		return {taskId: param.taskId, todolistId: param.todolistId}
 	})
@@ -105,8 +106,9 @@ export const slice = createSlice({
 				state[action.payload.todolistId] = action.payload.tasks
 			})
 			.addCase(removeTask.fulfilled, (state, action) => {
+				debugger
 				const tasks = state[action.payload.todolistId]
-				const index = tasks.findIndex(task => task.id !== action.payload.taskId)
+				const index = tasks.findIndex(task => task.id === action.payload.taskId)
 
 				if (index > -1) {
 					tasks.splice(index, 1)
