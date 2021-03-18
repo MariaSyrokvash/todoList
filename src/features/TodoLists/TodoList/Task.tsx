@@ -1,30 +1,42 @@
 import React, {ChangeEvent, useCallback} from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
-import {EditableSpan} from './components/EditableSpan/EditableSpan';
+import {EditableSpan} from '../../../components/EditableSpan/EditableSpan';
 import {IconButton} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
-import {TaskStatuses, TaskType} from './api/todolists_api';
+import {tasksActions} from '../index';
+import {useActions} from '../../../utils/redux-utils';
+import {TaskStatuses, TaskType} from '../../../api/types';
 
 export type TaskPropsType = {
-	changeTaskTitle: (id: string, newTitle: string, toDoListID: string) => void
-	removeTask: (id: string, toDoListID: string) => void
-	changeStatus: (id: string, status: TaskStatuses, toDoListID: string) => void
 	task: TaskType
 	todoListID: string
 }
 export const Task = React.memo((props: TaskPropsType) => {
+	const {removeTask, updateTask} = useActions(tasksActions)
 
 	const removeTaskHandler = () => {
-		props.removeTask(props.task.id, props.todoListID)
+		debugger
+		console.log(props.todoListID)
+		console.log(props.task)
+		removeTask({taskId: props.task.id, todolistId: props.todoListID})
 	}
 	const changeStatus = (event: ChangeEvent<HTMLInputElement>) => {
-		const newIsDoneValue  = event.currentTarget.checked
-		props.changeStatus(props.task.id, newIsDoneValue ? TaskStatuses.Completed : TaskStatuses.New, props.todoListID)
+		const newIsDoneValue = event.currentTarget.checked
+		updateTask({
+			taskID: props.task.id,
+			domainModel: {status: newIsDoneValue ? TaskStatuses.Completed : TaskStatuses.New},
+			toDoListID: props.todoListID
+		})
 	}
 
 	const changeValueHandler = useCallback((newValue: string) => {
-		props.changeTaskTitle(props.task.id, newValue, props.todoListID)
-	}, [props.changeTaskTitle, props.task.id, props.todoListID])
+		updateTask({
+			taskID: props.task.id,
+			domainModel: {title: newValue},
+			toDoListID: props.todoListID
+		})
+	}, [props.task.id, props.todoListID])
+
 
 	return <li key={props.task.id} className={props.task.status === TaskStatuses.Completed ? 'completed' : ''}>
 		<Checkbox checked={props.task.status === TaskStatuses.Completed} onChange={changeStatus} color={'primary'}/>

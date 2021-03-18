@@ -1,12 +1,12 @@
 import {
-	addTodoListTC, changeTodolistEntityStatusAC,
-	changeTodolistFilterAC, changeTodolistTitleTC, fetchTodoListTC, removeTodoListTC, TodoListDomainType,
+	addTodoList, changeTodolistEntityStatus,
+	changeTodolistFilter, changeTodolistTitle, fetchTodoList, removeTodoList, TodoListDomainType,
 	todolistsReducer
 } from './todolists-reducer';
 import {v1} from 'uuid';
-import {FilterValuesType} from '../App';
-import {TodoListType} from '../api/todolists_api';
-import {RequestStatusType} from './app-reducer';
+import {FilterValuesType} from '../../app/App';
+import {TodoListType} from '../../api/todolists_api';
+import {RequestStatusType} from '../Application/application-reducer';
 
 let startState: Array<TodoListDomainType> = []
 console.log(startState)
@@ -65,7 +65,7 @@ test('correct todolist should change its name', () => {
 test('correct filter of todolist should be changed', () => {
 	let newFilter: FilterValuesType = 'completed';
 
-	const endState = todolistsReducer(startState, changeTodolistFilterAC({filter: newFilter, id: todolistId2}));
+	const endState = todolistsReducer(startState, changeTodolistFilter({filter: newFilter, id: todolistId2}));
 
 	expect(endState[0].filter).toBe('all');
 	expect(endState[1].filter).toBe(newFilter);
@@ -84,7 +84,7 @@ test('todolist should be set to the stet', () => {
 test('correct entity status of todolist should be changed', () => {
 	let newStatus: RequestStatusType = 'loading';
 
-	const endState = todolistsReducer(startState, changeTodolistEntityStatusAC({status: newStatus, id: todolistId2,}));
+	const endState = todolistsReducer(startState, changeTodolistEntityStatus({status: newStatus, id: todolistId2,}));
 
 	expect(endState[0].entityStatus).toBe('idle');
 	expect(endState[1].entityStatus).toBe(newStatus);

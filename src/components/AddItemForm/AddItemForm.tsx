@@ -2,8 +2,13 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {IconButton, TextField} from '@material-ui/core';
 import AddCircleOutlineSharpIcon from '@material-ui/icons/AddCircleOutlineSharp';
 
+export type AddItemFormHelpersType = {
+	setError: (error: string) => void
+	setTitle: (title: string) => void
+}
+
 export type AddItemFormPropsType = {
-	addItem: (title: string) => void
+	addItem: (title: string, helpers: AddItemFormHelpersType) => void
 	disabled?: boolean
 }
 
@@ -24,10 +29,9 @@ const AddItemForm = React.memo(function ({disabled = false, addItem}: AddItemFor
 		}
 	}
 
-	const onCLickAddTaskHandler = () => {
+	const onCLickAddTaskHandler = async() => {
 		if (newTaskTitle.trim() !== '') {
-			addItem(newTaskTitle.trim());
-			setTitle('');
+			addItem(newTaskTitle.trim(), {setError, setTitle});
 		} else {
 			setError('This field is required')
 		}
@@ -42,7 +46,7 @@ const AddItemForm = React.memo(function ({disabled = false, addItem}: AddItemFor
 								 disabled={disabled}
 			/>
 			<IconButton onClick={onCLickAddTaskHandler} color={'primary'} disabled={disabled}>
-				<AddCircleOutlineSharpIcon />
+				<AddCircleOutlineSharpIcon/>
 			</IconButton>
 		</div>
 	)

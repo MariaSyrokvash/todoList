@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import './old/App.css';
+import './App.css';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -7,15 +7,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {CircularProgress, Container, LinearProgress} from '@material-ui/core';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppRootState} from './state/store';
-import {TaskType} from './api/todolists_api';
-import {CustomizedSnackbars} from './components/ErrorSnackBar/ErrorSnackBar';
-import {initializedTC, RequestStatusType} from './state/app-reducer';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import {Login} from './features/Login/Login';
-import TodoLists from './components/TodoLists/TodoLists';
-import {logoutTC} from './features/Login/auth-reducer';
+import {useSelector} from 'react-redux';
+import {CustomizedSnackbars} from '../components/ErrorSnackBar/ErrorSnackBar';
+import {appActions, appSelectors} from '../features/Application';
+import {Redirect, Route, Switch} from 'react-router-dom';
+import {authActions, authSelectors, Login} from '../features/Auth';
+import {TodoLists} from '../features/TodoLists';
+import {TaskType} from '../api/types';
+import {useActions} from '../utils/redux-utils';
 
 export type FilterValuesType = 'all' | 'completed' | 'active'
 export type TodoListType = {
@@ -26,34 +25,29 @@ export type TodoListType = {
 export type TaskStateType = {
 	[key: string]: Array<TaskType>
 }
-
 type  PropsType = {
 	demo?: boolean
 }
 
+
 export const App: React.FC<PropsType> = ({demo = false}) => {
-
-	// @ts-ignore
-	const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
-	const isInitialized = useSelector<AppRootState, boolean>(state => state.app.isInitialized)
-	const dispatch = useDispatch();
-	const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
-
+	const status = useSelector(appSelectors.selectStatus)
+	const isInitialized = useSelector(appSelectors.selectIsInitialized)
+	const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn)
+	const {logout} = useActions(authActions)
+	const {initializedApp} = useActions(appActions)
 
 	useEffect(() => {
-		dispatch(initializedTC())
+		initializedApp()
 	}, [])
-
 
 	const logoutHandler = useCallback(() => {
-		dispatch(logoutTC())
+		logout()
 	}, [])
-
 
 	if (!isInitialized) {
 		return <div className='circularProgressBox'><CircularProgress color="secondary"/></div>
 	}
-
 
 	return (
 		<>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {GenericResponseType, GetTasksResponse, TaskType, TodolistType, UpdateTaskModelType} from './types';
 
 const settings = {
 	withCredentials: true,
@@ -12,103 +13,39 @@ const instance = axios.create({
 	...settings
 })
 
-export type TodoListType = {
-	id: string
-	title: string
-	addedDate: string
-	order: number
-}
-
-type CreateDataResponseType = {
-	item: TodoListType
-}
-
-export type FieldErrorType = {
-	field: string
-	error: string
-}
-
-export type ResponseType<R = {}> = {
-	resultCode: number
-	messages: Array<string>
-	fieldsErrors?:  Array<FieldErrorType>
-	data: R
-}
-
-type GetTaskType = {
-	totalCount: number
-	error: null | string
-	items: Array<TaskType>
-}
-
-export enum TaskStatuses {
-	New = 0,
-	InProgress = 1,
-	Completed = 2,
-	Draft = 3
-}
-
-export enum TodoTaskPriories {
-	Low = 0,
-	Middle = 1,
-	Hi = 2,
-	Urgently = 3,
-	Later = 4
-}
-
-export type TaskType = {
-	description: string
-	title: string
-	status: TaskStatuses
-	priority: TodoTaskPriories
-	startDate: string
-	deadline: string
-	id: string
-	todoListId: string
-	order: number
-	addedDate: string
-}
-
-export type UpdateTaskModel = {
-	title: string
-	description: string
-	status: number
-	priority: number
-	startDate: string
-	deadline: string
-}
 
 
 export const todolistsAPI = {
-	getTodolists() {
-		return instance.get<Array<TodoListType>>('todo-lists')
+	getTodolists: function () {
+		return instance.get<Array<TodolistType>>('todo-lists')
 	},
 
 	createTodolist(title: string) {
-		return instance.post<ResponseType<CreateDataResponseType>>(`todo-lists/`, {title})
+		return instance.post<GenericResponseType<{ item: TodolistType }>>(`todo-lists/`, {title})
 	},
 
 	deleteTodolist(todolistId: string) {
-		return instance.delete<ResponseType>(`todo-lists/${todolistId}`)
+		return instance.delete<GenericResponseType>(`todo-lists/${todolistId}`)
 	},
 
 	updateTodolistTitle(todolistId: string, title: string) {
-		return instance.put<ResponseType>(`todo-lists/${todolistId}`, {title})
+		return instance.put<GenericResponseType>(`todo-lists/${todolistId}`, {title})
 	},
 
-	getTasks(todolistId: string) {
-		return instance.get<GetTaskType>(`todo-lists/${todolistId}/tasks`)
+	getTasks(todoListId: string) {
+		return instance.get<GetTasksResponse>(`todo-lists/${todoListId}/tasks`)
 	},
 
-	deleteTask(todolistId: string, taskId: string) {
-		return instance.delete<ResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`)
+	deleteTask(todolistId: string, taskID: string) {
+		debugger
+		return instance.delete<GenericResponseType>(`todo-lists/${todolistId}/tasks/${taskID}`)
 	},
 
 	createTask(todolistId: string, title: string) {
-		return instance.post<ResponseType<{ item: TaskType }>>(`todo-lists/${todolistId}/tasks`, {title})
+		return instance.post<GenericResponseType<{ item: TaskType}>>(`todo-lists/${todolistId}/tasks`, {title})
 	},
 
-	updateTask(todolistId: string, taskId: string, model: UpdateTaskModel) {
+	updateTask(todolistId: string, taskId: string, model: UpdateTaskModelType) {
 		return instance.put(`todo-lists/${todolistId}/tasks/${taskId}`, model)
 	}
 }
@@ -122,36 +59,15 @@ export type LoginParamsType = {
 
 export const authAPI = {
 	login(data: LoginParamsType) {
-		const promise = instance.post<ResponseType<{userId?: number}>>('auth/login', data)
+		const promise = instance.post<GenericResponseType<{userId?: number}>>('auth/login', data)
 		return promise
 	},
 	me() {
- 		const promise = instance.get<ResponseType<{id: number, email: string, login: string}>>('auth/me')
+		const promise = instance.get<GenericResponseType<{id: number; email: string; login: string}>>('auth/me')
 		return promise
 	},
 	logout() {
-		const promise = instance.delete<ResponseType<{userId?: number}>>('auth/login')
+		const promise = instance.delete<GenericResponseType<{userId?: number}>>('auth/login')
 		return promise
 	}
-}
-
-//уже не используются
-type _CreateTodolistResponseType = {
-	resultCode: number
-	messages: Array<string>
-	data: {
-		item: TodoListType
-	}
-}
-
-type _UpdateTodolistResponseType = {
-	resultCode: number
-	messages: Array<string>
-	data: {}
-}
-
-type _DeleteTodolistResponseType = {
-	resultCode: number
-	messages: Array<string>
-	data: {}
 }

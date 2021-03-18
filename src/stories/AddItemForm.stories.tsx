@@ -18,17 +18,20 @@ export default {
 // export const AddItemFormBaseExample = (props: any) => {
 // 	return <AddItemForm addItem={ callback }/>
 // }
+const asyncCallback = async(...params: any[]) => {
+	action('action from AddItemForm')(...params)
+}
 
 const Template: Story<AddItemFormPropsType> = (args) =>  <AddItemForm {...args} />
 
 export const AddItemFormExample = Template.bind({});
 AddItemFormExample.args = {
-	addItem: action('action from AddItemForm')
+	addItem: asyncCallback
 };
 
 export const AddItemFormDisableExample = (props: any) => {
 	return (
-		<AddItemForm disabled={true} addItem={action('button imside form clicked') } />
+		<AddItemForm disabled={true} addItem={asyncCallback} />
 	)
 }
 
