@@ -25,12 +25,8 @@ export type TodoListType = {
 export type TaskStateType = {
 	[key: string]: Array<TaskType>
 }
-type  PropsType = {
-	demo?: boolean
-}
 
-
-export const App: React.FC<PropsType> = ({demo = false}) => {
+export const App = () => {
 	const status = useSelector(appSelectors.selectStatus)
 	const isInitialized = useSelector(appSelectors.selectIsInitialized)
 	const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn)
@@ -38,7 +34,9 @@ export const App: React.FC<PropsType> = ({demo = false}) => {
 	const {initializedApp} = useActions(appActions)
 
 	useEffect(() => {
-		initializedApp()
+		if (!isInitialized) {
+			initializedApp()
+		}
 	}, [])
 
 	const logoutHandler = useCallback(() => {
@@ -69,7 +67,7 @@ export const App: React.FC<PropsType> = ({demo = false}) => {
 
 					<Switch>
 						<Route path={'/todoList'} exact render={() => <Redirect to={'/'}/>}/>
-						<Route path={'/'} exact render={() => <TodoLists demo={demo}/>}/>
+						<Route path={'/'} exact render={() => <TodoLists demo={false}/>}/>
 						<Route path={'/login'} render={() => <Login/>}/>
 						<Route path={'*'} render={() => <h1>404: PAGE NOT FOUND</h1>}/>
 						<Redirect from={'*'} to={'/404'}/>

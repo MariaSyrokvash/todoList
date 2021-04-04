@@ -14,7 +14,7 @@ export default {
 
 export const AppWithReduxBaseExample = () => {
 	return <>
-		<App demo={true}/>
+		<App />
 	</>
 }
 

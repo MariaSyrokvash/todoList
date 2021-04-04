@@ -27,7 +27,9 @@ const TodoLists: React.FC<PropsType> = ({demo = false}) => {
 		if (demo || !isLoggedIn) {
 			return
 		}
-		fetchTodoList()
+		if (!toDoLists.length) {
+			fetchTodoList()
+		}
 	}, [])
 
 	const addTodoListHandler = useCallback(async (title: string, helper: AddItemFormHelpersType) => {

@@ -25,7 +25,9 @@ export const TodoList = React.memo(function ({demo = false, ...props}: PropsType
 		if (demo) {
 			return
 		}
-		fetchTasks(props.todolist.id)
+		if (!props.tasks.length) {
+			fetchTasks(props.todolist.id)
+		}
 	}, [])
 
 	const onButtonClickFilterHandler = useCallback((filter: FilterValuesType) => changeTodolistFilter({
